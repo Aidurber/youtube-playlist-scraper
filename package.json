@@ -4,6 +4,10 @@
   "main": "src/index.js",
   "author": "Andrew Durber",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aidurber/youtube-playlist-scrapert.git"
+  },
   "dependencies": {
     "got": "^11.8.0",
     "lodash.get": "^4.4.2"

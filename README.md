@@ -7,8 +7,9 @@ This approach extracts the payload from `window.ytInitialData` which YouTube use
 ## Usage
 
 ```js
-const scrapePlaylist = require("<addPackageName>");
+const scrapePlaylist = require("youtube-playlist-scraper");
 
+// ID such as PLWKjhJtqVAbnZtkAI3BqcYxKnfWn_C704
 async function getPlaylist(id) {
   const data = await scrapePlaylist(id);
   return data;
