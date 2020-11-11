@@ -6,7 +6,9 @@ const tryParseJson = (str: string): object => {
   let data = null;
   try {
     data = JSON.parse(str);
-  } catch {}
+  } catch (e) {
+    console.log(e);
+  }
   return data;
 };
 
