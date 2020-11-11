@@ -19,6 +19,6 @@ export default function parseInitialData(html: string) {
   var match = html.match(
     /(?:window\["ytInitialData"\]|var ytInitialData) = ([^\n]+);/
   );
-  if (!match?.[1]) return null;
+  if (!match || !match[1]) return null;
   return tryParseJson(match[1]) || {};
 }
