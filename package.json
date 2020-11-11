@@ -1,0 +1,11 @@
+{
+  "name": "playlist-scraper",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "author": "Andrew Durber",
+  "license": "MIT",
+  "dependencies": {
+    "got": "^11.8.0",
+    "lodash.get": "^4.4.2"
+  }
+}
