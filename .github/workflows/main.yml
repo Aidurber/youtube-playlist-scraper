@@ -47,9 +47,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Test
-        env:
-          TZ: UTC
-          CI: 1
         run: yarn test
 
       - name: Build
