@@ -1,15 +1,28 @@
-const got = require("got");
-const get = require("lodash.get");
-const parseData = require("./parseInitialData");
-const getPlaylistUrl = (id) => `https://www.youtube.com/playlist?list=${id}`;
+import got from "got";
+import get from "lodash.get";
+import parseData from "./parseInitialData";
 
-const extractItems = (data) => {
+export type Video = {
+  id: string;
+  title: string;
+  name: string;
+};
+export type Playlist = {
+  title: string;
+  playlist: Video[];
+};
+
+const getPlaylistUrl = (id: string): string =>
+  `https://www.youtube.com/playlist?list=${id}`;
+
+// No way I'm typing the ytInitialData
+const extractItems = (data: object): Video[] => {
   const items = get(
     data,
     "contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer.contents"
   );
 
-  return items.map((item) => {
+  return items.map((item: any) => {
     const body = item.playlistVideoRenderer;
     const id = body.videoId;
     return {
@@ -19,14 +32,17 @@ const extractItems = (data) => {
     };
   });
 };
-module.exports = async (playlistId) => {
+export default async function scrapePlaylist(
+  playlistId: string
+): Promise<Playlist> {
   const url = getPlaylistUrl(playlistId);
   const { body: html } = await got(url);
   const data = parseData(html);
-  console.log(data);
+  if (data === null) {
+    throw new Error("Unable to parse ytInitialData");
+  }
   const maybeTitle = get(data, "metadata.playlistMetadataRenderer.title") || "";
-
-  let payload = null;
+  let payload: Playlist | null = null;
   try {
     payload = {
       title: maybeTitle.trim(),
@@ -36,4 +52,4 @@ module.exports = async (playlistId) => {
     throw new Error("Unable to parse body");
   }
   return payload;
-};
+}
