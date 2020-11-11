@@ -1,5 +1,5 @@
 {
-  "name": "playlist-scraper",
+  "name": "youtube-playlist-scraper",
   "version": "0.1.0",
   "main": "src/index.js",
   "author": "Andrew Durber",
