@@ -20,5 +20,5 @@ export default function parseInitialData(html: string) {
     /(?:window\["ytInitialData"\]|var ytInitialData) = ([^\n]+);/
   );
   if (!match || !match[1]) return null;
-  return tryParseJson(match[1]) || {};
+  return tryParseJson(match[1]) || null;
 }
