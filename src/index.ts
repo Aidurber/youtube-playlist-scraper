@@ -1,4 +1,4 @@
-import got from "got";
+import fetch from "node-fetch";
 import get from "lodash.get";
 import parseData from "./parseInitialData";
 
@@ -51,7 +51,11 @@ export default async function scrapePlaylist(
   playlistId: string
 ): Promise<Playlist> {
   const url = getPlaylistUrl(playlistId);
-  const { body: html } = await got(url);
+  const response = await fetch(url);
+  const html = await response.text();
+  if (!response.ok) {
+    throw new Error(`Unable to fetch playlist with ID: ${playlistId}`);
+  }
   const data = parseData(html);
   if (data === null) {
     throw new Error("Unable to parse ytInitialData");
