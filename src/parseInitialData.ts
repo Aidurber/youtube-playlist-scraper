@@ -17,7 +17,7 @@ const tryParseJson = (str: string): object => {
  * @param html - HTML string
  */
 export default function parseInitialData(html: string) {
-  if (!html || !html.length) return {};
+  if (!html || !html.length) return null;
   var match = html.match(
     /(?:window\["ytInitialData"\]|var ytInitialData) = ([^\n]+);/
   );
