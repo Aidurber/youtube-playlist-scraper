@@ -1,5 +1,5 @@
 [![license](https://img.shields.io/github/license/aidurber/youtube-playlist-scraper.svg)]()
-[![npm version](https://badge.fury.io/js/react-picky.svg)](https://badge.fury.io/js/youtube-playlist-scraper)
+[![npm version](https://badge.fury.io/js/youtube-playlist-scraper.svg)](https://badge.fury.io/js/youtube-playlist-scraper)
 [![gzip size](https://badgen.net/bundlephobia/minzip/youtube-playlist-scraper)]()
 
 # YouTube Playlist Scraper
