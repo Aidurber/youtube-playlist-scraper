@@ -1,3 +1,7 @@
+[![license](https://img.shields.io/github/license/aidurber/youtube-playlist-scraper.svg)]()
+[![npm version](https://badge.fury.io/js/youtube-playlist-scraper.svg)](https://badge.fury.io/js/youtube-playlist-scraper)
+[![gzip size](https://badgen.net/bundlephobia/minzip/youtube-playlist-scraper)]()
+
 # YouTube Playlist Scraper
 
 Scrape the contents of a playlist. Alternative libraries that are attempting this may now be broken since the usual approach of appending `disable_polymer=true` to the query string no longer appears to work. This means that when they're grabbing the HTML, the DOM does not contain the data you're trying to scrape.
