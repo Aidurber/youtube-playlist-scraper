@@ -9,9 +9,7 @@ export * from "./types";
  *
  * @param playlistId - ID of the playlist we wish to scrape
  */
-export default async function scrapePlaylist(
-  playlistId: string
-): Promise<Playlist> {
+export async function scrapePlaylist(playlistId: string): Promise<Playlist> {
   const html = await getPlaylistHtml(playlistId);
   const data = parseData(html);
   if (data === null) {
