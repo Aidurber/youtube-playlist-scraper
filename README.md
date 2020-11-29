@@ -13,8 +13,7 @@ This approach extracts the payload from `window.ytInitialData` which YouTube use
 ### JavaScript
 
 ```js
-// .default is required in versions up to 1.0.4
-const scrapePlaylist = require("youtube-playlist-scraper").default;
+const { scrapePlaylist } = require("youtube-playlist-scraper");
 
 // ID such as PLWKjhJtqVAbnZtkAI3BqcYxKnfWn_C704
 async function getPlaylist(id) {
@@ -26,7 +25,7 @@ async function getPlaylist(id) {
 ### TypeScript
 
 ```js
-import scrapePlaylist, { Playlist } from "youtube-playlist-scraper";
+import { scrapePlaylist, Playlist } from "youtube-playlist-scraper";
 
 // ID such as PLWKjhJtqVAbnZtkAI3BqcYxKnfWn_C704
 async function getPlaylist(id): Promise<Playlist | null> {
