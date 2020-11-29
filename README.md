@@ -8,6 +8,11 @@ Scrape the contents of a playlist. Alternative libraries that are attempting thi
 
 This approach extracts the payload from `window.ytInitialData` which YouTube uses to hydrate the page.
 
+## Limitations
+One limitation of this library and other similar libraries, is it's hard to do pagination. If your playlist has over 100 items, there's nothing (that I know of) we can do to get the rest of the items via scraping. If you have some ideas, don't be afraid to holler. But I highly recommend you just use the [PlaylistItems resource from the YouTube Data API](https://developers.google.com/youtube/v3/docs/playlistItems/list)
+
+One more thing, YouTube can change the API or the structure of the DOM and this library (and others will/may break). Be sure to validate the results or just use their API linked above. 
+
 ## Usage
 
 ### JavaScript
