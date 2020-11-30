@@ -1,3 +1,4 @@
+import { RequestInit } from "node-fetch";
 import { buildPlaylist } from "./build-playlist";
 import { getPlaylistHtml } from "./get-playlist-html";
 import parseData from "./parse-initial-data";
@@ -9,8 +10,11 @@ export * from "./types";
  *
  * @param playlistId - ID of the playlist we wish to scrape
  */
-export async function scrapePlaylist(playlistId: string): Promise<Playlist> {
-  const html = await getPlaylistHtml(playlistId);
+export async function scrapePlaylist(
+  playlistId: string,
+  fetchOptions?: RequestInit
+): Promise<Playlist> {
+  const html = await getPlaylistHtml(playlistId, fetchOptions);
   const data = parseData(html);
   if (data === null) {
     throw new Error("Unable to parse ytInitialData");

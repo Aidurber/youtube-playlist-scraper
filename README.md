@@ -9,9 +9,10 @@ Scrape the contents of a playlist. Alternative libraries that are attempting thi
 This approach extracts the payload from `window.ytInitialData` which YouTube uses to hydrate the page.
 
 ## Limitations
+
 One limitation of this library and other similar libraries, is it's hard to do pagination. If your playlist has over 100 items, there's nothing (that I know of) we can do to get the rest of the items via scraping. If you have some ideas, don't be afraid to holler. But I highly recommend you just use the [PlaylistItems resource from the YouTube Data API](https://developers.google.com/youtube/v3/docs/playlistItems/list)
 
-One more thing, YouTube can change the API or the structure of the DOM and this library (and others will/may break). Be sure to validate the results or just use their API linked above. 
+One more thing, YouTube can change the API or the structure of the DOM and this library (and others will/may break). Be sure to validate the results or just use their API linked above.
 
 ## Usage
 
@@ -29,12 +30,27 @@ async function getPlaylist(id) {
 
 ### TypeScript
 
-```js
+```ts
 import { scrapePlaylist, Playlist } from "youtube-playlist-scraper";
 
 // ID such as PLWKjhJtqVAbnZtkAI3BqcYxKnfWn_C704
 async function getPlaylist(id): Promise<Playlist | null> {
   const data = await scrapePlaylist(id);
+  return data;
+}
+```
+
+### Options
+
+```ts
+// You can also override the fetch request by adding headers, changing the user agent etc.
+async function getPlaylist(id): Promise<Playlist | null> {
+  const data = await scrapePlaylist(id, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15",
+    },
+  });
   return data;
 }
 ```
