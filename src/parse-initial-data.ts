@@ -19,7 +19,7 @@ const tryParseJson = (str: string): object => {
 export default function parseInitialData(html: string) {
   if (!html || !html.length) return null;
   var match = html.match(
-    /(?:window\["ytInitialData"\]|var ytInitialData) = ([^\n]+);/m
+    /(?:window\[(?:"|')ytInitialData(?:"|')\]|var ytInitialData) = ([^\n]+?); ?(?:<\/script>|\n)/
   );
   if (!match || !match[1]) return null;
   return tryParseJson(match[1]) || null;
